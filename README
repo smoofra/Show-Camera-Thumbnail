@@ -1,0 +1,12 @@
+This is a very simple lightroom plugin that allows you to view
+the thumbnail that your camera embeded in your raw files.
+
+Requirements: 
+  * windows
+  * dcraw should be in your PATH
+
+Simply select the photo who's camera thumbnail you want to view 
+and run "File > Plug-in Extras > Show Camera Thumbnail
+
+
+
