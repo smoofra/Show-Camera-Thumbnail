@@ -4,6 +4,7 @@ local LrDialogs = import 'LrDialogs'
 local LrLogger = import 'LrLogger'
 local LrShell = import 'LrShell'
 local LrApplication =  import 'LrApplication'
+local LrPathUtils = import 'LrPathUtils'
 local catalog = LrApplication:activeCatalog()
 
 -- Create the logger and enable the print function.
@@ -20,7 +21,11 @@ local function foobar()
 	--outputToLog( "MyHWExportItem.showModalMessage function entered...." )
 	--outputToLog( catalog:getTargetPhoto():getRawMetadata("path"))
 
-        LrShell.openFilesInApp( { catalog:getTargetPhoto():getRawMetadata("path") },  _PLUGIN.path .. "\\show.js"  )
+        if LrPathUtils.isAbsolute("c:\\") then
+                LrShell.openFilesInApp( { catalog:getTargetPhoto():getRawMetadata("path") },  _PLUGIN.path .. "\\show.js"  )
+        else
+                LrShell.openFilesInApp( { catalog:getTargetPhoto():getRawMetadata("path") },  _PLUGIN.path .. "/show.py"  )
+        end
 end
 
 import 'LrTasks'.startAsyncTask( foobar  )
